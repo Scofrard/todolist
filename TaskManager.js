@@ -1,23 +1,17 @@
 class TaskManager {
+    #tasks; 
 
-    #tasks
     constructor() {
         this.#tasks = [];
     }
+
+    // Méthode pour ajouter une nouvelle tâche
     addTask(titre) {
-        this.#tasks.push(new Task(titre, this.#tasks.length));
+        this.#tasks.push(new Task(titre, this.#tasks.length)); 
     }
-
-    deleteTask(id) {
-        this.#tasks.splice(id, 1);
-    }
-
-    updateTask(id, titre) {
-        this.#tasks[id].titre = titre;
-    }
-
     get tasks() {
-        return this.#tasks;
+        return this.#tasks; 
     }
-    
 }
+
+export { TaskManager }; 
