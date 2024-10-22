@@ -24,5 +24,6 @@ class Task {
         this.#id = id;
     }
 
-
 }
+
+export { Task };
