@@ -5,6 +5,7 @@ const taskManager = new TaskManager();
 const inputField = document.querySelector('input[type="text"]'); 
 const addButton = document.querySelector('button');  
 const taskList = document.querySelector('ul');
+const errorMessage = document.getElementById('error-message');
 
 // Fonction pour afficher les tâches
 function renderTasks() {
@@ -53,9 +54,15 @@ function renderTasks() {
 // Ajout de l'événement sur le bouton "Ajouter"
 addButton.addEventListener('click', () => {
     const taskTitle = inputField.value.trim();  // Récupérer le texte entré par l'utilisateur
-    if (taskTitle) {
+
+    if (taskTitle !== "") {
+        // Si le champ n'est pas vide, cacher le message d'erreur et ajouter la tâche
+        errorMessage.classList.add('hidden');
         taskManager.addTask(taskTitle); 
         inputField.value = '';  // Vider le champ de saisie après ajout
         renderTasks(); 
+    } else {
+        // Si le champ est vide, afficher le message d'erreur
+        errorMessage.classList.remove('hidden');
     }
 });
