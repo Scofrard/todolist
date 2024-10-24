@@ -27,9 +27,23 @@ function renderTasks() {
         checkbox.className = "h-4 w-4 text-teal-600 focus:ring-teal-500 border-gray-300 rounded mr-2";
         checkbox.checked = false; 
 
+        // Synchroniser avec l'état isCompleted
+        checkbox.checked = task.isCompleted; 
+
+        // Ajouter un événement de changement sur la checkbox
+        checkbox.addEventListener('change', () => {
+            task.isCompleted = checkbox.checked; // Mettre à jour l'état de la tâche
+            renderTasks(); // Re-render la liste pour appliquer le style
+        });
+
         // Ajouter le titre de la tâche
         const taskTitle = document.createElement('span');
         taskTitle.textContent = task.titre;
+
+        // Appliquer une ligne barrée si la tâche est complétée
+        if (task.isCompleted) {
+            taskTitle.classList.add('line-through');
+        }
 
         // Ajouter le bouton supprimer
         const deleteButton = document.createElement('button');
