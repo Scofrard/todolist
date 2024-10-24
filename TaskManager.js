@@ -9,8 +9,12 @@ class TaskManager {
 
     // Méthode pour ajouter une nouvelle tâche
     addTask(titre) {
-        console.log(`Ajout de la tâche : ${titre}`); 
+        //console.log(`Ajout de la tâche : ${titre}`); 
         this.#tasks.push(new Task(titre, this.#tasks.length)); 
+    }
+
+    removeTask(id) {
+        this.#tasks = this.#tasks.filter(task => task.id !== id); 
     }
 
     get tasks() {
